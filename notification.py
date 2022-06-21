@@ -39,7 +39,7 @@ class NotificationsList():
         while i < len(list(self._internalRep.keys())):
             nextNotification : int = int(list(self._internalRep.keys())[i])
             secondsToWait = (bedtime - datetime.datetime.now()).total_seconds() - 60*(nextNotification)
-            if secondsToWait >= 0:
+            if secondsToWait >= 0: # we found our dude
                 break
             else:
                 i += 1
@@ -49,8 +49,9 @@ class NotificationsList():
             return
         print("Operation successful!")
         print("Waiting {} seconds".format(secondsToWait))
-        self._stop.wait(secondsToWait)
+        self._stop.wait(timeout = secondsToWait)
         if (self._stop.isSet()):
+            print("here")
             return
         #time.sleep(secondsToWait)
         print("Alarm going off")
