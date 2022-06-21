@@ -1,0 +1,3 @@
+wakeupTime=08:00
+hoursOfSleep=9
+notifications=[2,4]
